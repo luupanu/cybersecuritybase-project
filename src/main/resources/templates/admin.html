@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Super secret admin panel</title>
+    </head>
+    <body>
+
+        <h1>Super secret admin panel</h1>
+
+        <table>
+            <tr>
+                <th>name</th>
+                <th>address</th>
+                <th>credit card number</th>
+            </tr>
+            <tr th:each="attendee : ${attendees}">
+                <td th:text="${attendee.name}"></td>
+                <td th:text="${attendee.address}"></td>
+                <td th:text="${attendee.creditcard}"></td>
+            </tr>
+        </table>
+
+        <form>
+            <button formaction="/logout">Log out</button>
+        </form>
+    </body>
+</html>

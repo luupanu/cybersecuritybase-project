@@ -5,14 +5,33 @@
     </head>
     <body>
 
-        <h1>Sign up to the event using this form</h1>
+        <h1 style="color: #00aa00">Number of attendees</h1>
+        <p><span th:text="${count}" /> people have already signed up for the event!</p>
+
+        <h1 style="color: #0000aa">Sign up to the event using this form</h1>
+        <p>Signing up for the event costs 5$.</p>
+        <p>Don't worry, we use the best security in town to handle your credit card details!</p>
 
         <form action="#" th:action="@{/form}" method="POST">
             <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
             <p><label for="address">Address</label>: <input type="text" name="address" id="address"/></p>
+            <p><label for="address">Credit card for payment</label>: <input type="text" name="creditcard" id="creditcard"/></p>
             <p><input type="submit" value="Submit" /></p>
         </form>
 
-        <p></p>
+        <h1 style="color: #aa0000">Messages</h1>
+        <p>Send a message to your fellow attendees!</p>
+        <form action="#" th:action="@{/message}" method="POST">
+            <textarea name="message" id="message" style="width: 400px; height: 100px"></textarea>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+
+        <table>
+            <tr th:each="message : ${messages}">
+                <!-- I copied this code from a friend -->
+                <td th:utext="${message.message}"></td>
+            </tr>
+        </table>
+
     </body>
 </html>
